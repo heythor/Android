@@ -51,14 +51,22 @@ class MainActivity : AppCompatActivity() {
         val num2 = value2.toInt()
 
 
-        var resultCalculate: Int?
 
-        when(operations()) {
-            "Soma" -> { resultCalculate = num1 + num2 }
-            "Subtração" -> { resultCalculate = num1 - num2 }
-            "Multiplicação" -> { resultCalculate = num1 * num2 }
-            "Divisão" -> {resultCalculate = num1 / num2 }
-            else -> resultCalculate = null
+
+       val resultCalculate = when(operations()) {
+            "Soma" -> {
+                num1 + num2
+            }
+            "Subtração" -> {
+                num1 - num2
+            }
+            "Multiplicação" -> {
+                num1 * num2
+            }
+            "Divisão" -> {
+                num1 / num2
+            }
+            else -> null
         }
         val resultOperation = "O resultado é: ${resultCalculate}"
         return resultOperation
