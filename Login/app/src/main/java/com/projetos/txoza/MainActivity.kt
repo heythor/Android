@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.projetos.txoza.util.User
 import com.projetos.txoza.util.isEmailValid
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val inputEmail = findViewById<EditText>(R.id.edtText_email)
         val inputPassword = findViewById<EditText>(R.id.editTextTextPassword)
         val buttonLogin = findViewById<Button>(R.id.bt_login)
+        val txtEmailInvalid = findViewById<TextView>(R.id.txt_invalidEmail)
 
 
         val txoza = User("Txoza", "txoza@teste.com", "teste123")
@@ -62,8 +65,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s!!.isNotEmpty()) {
-                    isEmailValid(s.toString())
-                    buttonLogin.setBackgroundColor(Color.GREEN)
+                   if (isEmailValid(s.toString()) == true) {
+                       txtEmailInvalid.visibility = View.GONE
+                       buttonLogin.setBackgroundColor(Color.GREEN)
+                   }else txtEmailInvalid.visibility = View.VISIBLE
                 }
             }
         })
