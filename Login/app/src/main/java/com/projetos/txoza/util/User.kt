@@ -9,7 +9,7 @@ class User(
    private val userPassword = password
     private val userEmail = email
 
-    fun validateUSer(email: String, password: String): Boolean {
+    fun validateUser(email: String, password: String): Boolean {
         if (email == userEmail && password == userPassword) {
             return true
         }
