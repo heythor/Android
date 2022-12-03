@@ -4,22 +4,35 @@ import com.projetos.txoza.util.User
 import org.junit.Test
 import org.junit.Assert.*
 
-class ValidadeUsers {
+class TestUserValidation {
 
-    val txoza = User("Txoza", "txoza@teste.com", "12345")
 
     @Test
-    fun userIsValid() {
-        assertTrue(txoza.validateUSer("txoza@teste.com", "12345"))
+    fun testWithValidEmailAndPassword() {
+
+        val txoza = User("Txoza", "txoza@teste.com", "12345")
+        val result = txoza.validateUser("txoza@teste.com", "12345")
+        assertTrue(result)
     }
 
     @Test
-    fun userEmailInvalid() {
-        assertFalse(txoza.validateUSer("txoza@hotmail.com", "12345"))
+    fun testWithInvalidEmail() {
+        val txoza = User("Txoza", "txoza@teste.com", "12345")
+        val result = txoza.validateUser("txoza@hotmail.com", "12345")
+        assertFalse(result)
     }
 
     @Test
-    fun userPasswordInvalid() {
-        assertFalse(txoza.validateUSer("txoza@teste.com", "1234"))
+    fun testWithInvalidPassword() {
+        val txoza = User("Txoza", "txoza@teste.com", "12345")
+        val result = txoza.validateUser("txoza@teste.com", "1234")
+        assertFalse(result)
+    }
+
+    @Test
+    fun testWithEmptyEmail() {
+        val txoza = User("Txoza", "txoza@teste.com", "12345")
+        val result = txoza.validateUser("", "")
+        assertFalse(result)
     }
 }

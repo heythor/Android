@@ -4,17 +4,19 @@ import com.projetos.txoza.util.isEmailValid
 import org.junit.Test
 import org.junit.Assert.*
 
-class EmailTest {
+class VerifyEmailTest {
 
     @Test
-    fun emailIsValid() {
+    fun testWithValidEmail() {
         val email = "email@test.com"
-        assertTrue(isEmailValid(email))
+        val result = isEmailValid(email)
+        assertTrue(result)
     }
 
     @Test
-    fun emailIsInvalid(){
+    fun testWithInvalidEmail(){
         val email = "email.email.com"
-        assertFalse(isEmailValid(email))
+        val result = isEmailValid(email)
+        assertFalse(result)
     }
 }

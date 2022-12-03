@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     )
                         .show();
                 }
-                txoza.validateUSer(email, password) == false -> {
+                txoza.validateUser(email, password) == false -> {
                     Toast.makeText(
                         applicationContext,
                         "Email ou senha inválido",
